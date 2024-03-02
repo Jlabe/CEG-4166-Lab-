@@ -95,13 +95,9 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
-	char msg[100];
-
-	xTaskCreate(DisplayTask, "task2", 100, NULL, configMAX_PRIORITIES - 1, &DisplayTaskHandle);
-
-	xTaskCreate(PotentiometerReadTask, "task1", 100, NULL, configMAX_PRIORITIES - 1, &PotentiometerReadTaskHandle);
-
+  char msg[100];
+  xTaskCreate(PotentiometerReadTask, "task1", 100, NULL, configMAX_PRIORITIES - 1, &PotentiometerReadTaskHandle);
+  xTaskCreate(DisplayTask, "task2", 100, NULL, configMAX_PRIORITIES - 1, &DisplayTaskHandle);
   HAL_Init();
 
   SystemClock_Config();
