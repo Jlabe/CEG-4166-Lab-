@@ -49,8 +49,8 @@ I2C_HandleTypeDef hi2c1;
 
 UART_HandleTypeDef huart2;
 
-osThreadId Task1Handle;
-osThreadId Task2Handle;
+osThreadId PotentiometerReadTaskHandle;
+osThreadId DisplayTaskHandle;
 osMessageQId QHandle;
 /* USER CODE BEGIN PV */
 
@@ -98,9 +98,9 @@ int main(void)
 
 	char msg[100];
 
-	xTaskCreate(DisplayTask, "task2", 100, NULL, configMAX_PRIORITIES - 1, &Task2Handle);
+	xTaskCreate(DisplayTask, "task2", 100, NULL, configMAX_PRIORITIES - 1, &DisplayTaskHandle);
 
-	xTaskCreate(PotentiometerReadTask, "task1", 100, NULL, configMAX_PRIORITIES - 1, &Task1Handle);
+	xTaskCreate(PotentiometerReadTask, "task1", 100, NULL, configMAX_PRIORITIES - 1, &PotentiometerReadTaskHandle);
 
   HAL_Init();
 
